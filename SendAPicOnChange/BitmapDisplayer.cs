@@ -6,7 +6,7 @@ namespace SendAPicOnChange
 {
     internal class BitmapDisplayer : IPresenter<Bitmap>, IControlContentProvider
     {
-        public string Tag { get; set; } = MainWindow.TagForBitmapPanel;
+        public string Tag { get; set; } = MainWindow.TagForBitmapPictureBox;
         public Control Control { get; set; }
 
         public void Present(Bitmap source)

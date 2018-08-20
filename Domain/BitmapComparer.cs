@@ -9,13 +9,20 @@ namespace Domain
 
         public int Accuracy
         {
-            get => 10 * SizeShrink;
-            set => SizeShrink = value / 10;
+            get => 101 - SizeShrink;
+            set => SizeShrink = 101 - value;
         }
 
         public int ColorShrink = 32;
         public int Tolerance { get;set; } = 4;
         public int MaxGlitches = 32;
+
+        private void Save(Bitmap x, string name)
+        {
+            #if DEBUG
+            x.Save(name);
+            #endif
+        }
 
         public int Compare(Bitmap a, Bitmap b)
         {
@@ -25,14 +32,14 @@ namespace Domain
             // gray-en-ize
             ShrinkPalette(a);
             ShrinkPalette(b);
-            a.Save(@"C:\Repositories\paletteshrunkA.bmp");
-            b.Save(@"C:\Repositories\paletteshrunkB.bmp");
+            Save(a, @"C:\Repositories\paletteshrunkA.bmp");
+            Save(b, @"C:\Repositories\paletteshrunkB.bmp");
 
             // shrink
             var smalla = Scale(a);
             var smallb = Scale(b, smalla.Size);
-            smalla.Save(@"C:\Repositories\paletteAndSizeShrunkA.bmp");
-            smallb.Save(@"C:\Repositories\paletteAndSizeShrunkB.bmp");
+            Save(smalla, @"C:\Repositories\paletteAndSizeShrunkA.bmp");
+            Save(smallb, @"C:\Repositories\paletteAndSizeShrunkB.bmp");
 
             // result count
             var glitches = 0;
@@ -55,18 +62,16 @@ namespace Domain
                 }
             }
 
-            changeMap.Save(@"C:\Repositories\changemap.bmp");
+            Save(changeMap, @"C:\Repositories\changemap.bmp");
 
             return glitches == 0 ? 0 : 1;
         }
 
         private bool IsBlack(Color color)
         {
-            //if (color.R > Tolerance || 
-            //    color.G > Tolerance || 
-            //    color.B > Tolerance) 
-            //    return false;
-            if (color.R + color.G + color.B > Tolerance)
+            if (color.R > Tolerance || 
+                color.G > Tolerance || 
+                color.B > Tolerance) 
                 return false;
 
             return true;

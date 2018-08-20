@@ -26,15 +26,5 @@ namespace Domain
 
             return null;
         }
-
-        public void SetTolerance(int tolerance)
-        {
-            _changeDetector.Tolerance = tolerance;
-        }
-
-        public void SetAccuracy(int accuracy)
-        {
-            _changeDetector.Accuracy = accuracy;
-        }
     }
 }

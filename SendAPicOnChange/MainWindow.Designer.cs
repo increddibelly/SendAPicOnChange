@@ -32,7 +32,7 @@
             this.trackTolerance = new System.Windows.Forms.TrackBar();
             this.tbTolerance = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.PictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbAccuracy = new System.Windows.Forms.TextBox();
             this.trackAccuracy = new System.Windows.Forms.TrackBar();
@@ -44,7 +44,9 @@
             this.btStart = new System.Windows.Forms.Button();
             this.btStop = new System.Windows.Forms.Button();
             this.lbTimestamp = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackTolerance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackAccuracy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -78,16 +80,17 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Tolerance";
             // 
-            // panel1
+            // PictureBox1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.PictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(12, 79);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(860, 470);
-            this.panel1.TabIndex = 3;
+            this.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PictureBox1.Location = new System.Drawing.Point(12, 79);
+            this.PictureBox1.Name = "PictureBox1";
+            this.PictureBox1.Size = new System.Drawing.Size(860, 470);
+            this.PictureBox1.TabIndex = 3;
+            this.PictureBox1.TabStop = false;
             // 
             // label2
             // 
@@ -197,11 +200,21 @@
             this.lbTimestamp.Text = "--:--:--";
             this.lbTimestamp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Form1
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(716, 60);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(75, 16);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Last update:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.lbTimestamp);
             this.Controls.Add(this.btStop);
             this.Controls.Add(this.btStart);
@@ -212,13 +225,15 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbAccuracy);
             this.Controls.Add(this.trackAccuracy);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.PictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbTolerance);
             this.Controls.Add(this.trackTolerance);
-            this.Name = "Form1";
+            this.Name = "MainWindow";
             this.Text = "CamSpammer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.trackTolerance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackAccuracy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
@@ -231,7 +246,7 @@
         private System.Windows.Forms.TrackBar trackTolerance;
         private System.Windows.Forms.TextBox tbTolerance;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox PictureBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbAccuracy;
         private System.Windows.Forms.TrackBar trackAccuracy;
@@ -243,6 +258,7 @@
         private System.Windows.Forms.Button btStart;
         private System.Windows.Forms.Button btStop;
         private System.Windows.Forms.Label lbTimestamp;
+        private System.Windows.Forms.Label label5;
     }
 }
 
